@@ -5,12 +5,6 @@ function createMap(state) {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   });
 
-
-  // Create a baseMaps object to hold the streetmap layer.
-  var baseMaps = {
-    "Street Map": streetmap
-  };
-
   // Create the map object with options.
   var map = L.map("map-id", {
     center: [31.054487, -97.563461 ],
@@ -19,20 +13,17 @@ function createMap(state) {
   });
 
   // Create a layer control, and pass it baseMaps and overlayMaps. Add the layer control to the map.
-  L.control.layers(baseMaps, {
-    collapsed: false
-  }).addTo(map);
+
 }
 
 function createMarkers(response) {
   
   // Pull the "stations" property from response.data.
   var feature = response.features;
-  console.log(feature)
   var state = new L.layerGroup()
 
   L.geoJson(response, {
-    color: "orange",
+    color: "#50a573",
     weight:2
     ,
     onEachFeature: function(feature,layer) {
