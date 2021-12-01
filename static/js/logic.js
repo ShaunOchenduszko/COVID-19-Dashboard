@@ -6,7 +6,7 @@ function createMap(state) {
   });
 
   // Create the map object with options.
-  var map = L.map("map-id", {
+  L.map("map", {
     center: [31.054487, -97.563461 ],
     zoom: 3,
     layers: [streetmap, state]
@@ -36,4 +36,4 @@ function createMarkers(response) {
 
 
 // Perform an API call to the Citi Bike API to get the station information. Call createMarkers when it completes.
-d3.json("../../Resources/geoJSON_usa.json").then(createMarkers);
+d3.json("Resources/geoJSON_usa.json").then(createMarkers);
