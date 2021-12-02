@@ -1,75 +1,33 @@
-import datetime as dt
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
+from flask import Flask,render_template, jsonify, request
 from sqlalchemy import create_engine, func
+import json
+import os 
 
-from flask import Flask, jsonify, request, render_template
-from sqlalchemy.sql.expression import and_, false, true
-from config import post_pass
+# engine and connect to sql DB
 
-#################################################
-# Database Setup
-#################################################
-connection_string = f"postgres:{post_pass}@localhost:5432/Project2"
-engine = create_engine(f'postgresql://{connection_string}') 
+# save referances to table 
 
-# reflect an existing database into a new model
-Base = automap_base()
-# reflect the tables
-Base.prepare(engine, reflect=True)
-
-# Save reference to the table
-covid_Vac = Base.classes.covid_vac
-
-
-#################################################
-# Flask Setup
-#################################################
+# create and modify the flask app
 app = Flask(__name__)
 
-#################################################
-# Flask Routes
-#################################################
-
+# opening standard route
 @app.route('/')
-def hello():
+def home():
+    with open ('templates/index.html') as f:
+        return f.read()
 
-    data = {'username': 'Pang', 'site': 'stackoverflow.com'}
-    return render_template('test.html', data=data)
-
-
-@app.route("/<state>", methods=["GET", "POST"])
-def test_page():
-
-    print("Request received for 'Home' page....")
-    if request.method == "POST":
-        print(request.get_json())
-
-        session = Session(engine)
-
-        state = request.form['nm']
-
-        resutl = session.query(covid_Vac.state, func.count(covid_Vac.state)).\
-            group_by(covid_Vac.state).\
-            order_by(func.count(covid_Vac.state).desc()).filter(covid_Vac.state == state).all()
+# routes that will be fetched with arguements end points
+@app.route('/cov/<state>')
+def state_func(state):
+    return jsonify({f"{state}":"first"})
         
-        session.close()
+@app.route('/cov1/<date>')
+def date_func(date):
+    # with open( f'cov/{date}') as f:
+        return jsonify({f"{date}":"second"})
 
-        result_list = []
-
-        for state, count in resutl:
-            result_dict = {}
-            result_dict['state'] = state
-            result_dict['count'] = count
-            result_list.append(result_dict)
-        
-        return jsonify(result_list)
-    else:
-        message = {"greeting": "Hello from Flask!"}
-        return jsonify(message)
-
-
-
-if __name__ == "__main__":
-    # @TODO: Create your app.run statement here
+# extra ending thingy that I still dont understand 
+if __name__ == '__main__':
     app.run(debug=True)
+    
+
