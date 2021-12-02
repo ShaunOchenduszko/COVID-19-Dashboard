@@ -16,6 +16,7 @@ function createMap(statesborder) {
 
 function createMarkers(response) {
 
+  console.log(response)
   var stateborder = new L.layerGroup()
 
   L.geoJson(response, {
@@ -34,4 +35,4 @@ function createMarkers(response) {
 
 
 // Perform an API call to the Citi Bike API to get the station information. Call createMarkers when it completes.
-d3.json("Resources/geoJSON_usa.json").then(createMarkers);
+d3.json("https://raw.githubusercontent.com/ShaunOchenduszko/COVID-19-Visualization/Rbranch/Resources/geoJSON_usa.json").then(createMarkers);

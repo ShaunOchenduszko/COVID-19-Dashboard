@@ -3,11 +3,6 @@
 // flask handles state that is passed 
 
 
-
-d3.selectAll("#States").on("change", StateChanged);
-//d3.selectAll("#Dates").on("change", DateChanged);
-
-
 function StateChanged(){
     var dropdownMenu = d3.select("#States");
     var state = dropdownMenu.property("value");
