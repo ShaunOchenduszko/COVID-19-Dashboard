@@ -20,7 +20,7 @@
         crossorigin="anonymous"/>
 </head>
 <body>
-  <div class="container" style='background-color: aqua;'>
+  <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
         <h1>COVID-19 USA Pandemic Dashboard</h1>
@@ -28,7 +28,7 @@
     </div>
     <div class="row">
         <div class="col-md-2">
-            <div class="well" style="background-color: greenyellow;">
+            <div class="well">
                 <h5>Dates</h5>
                 <select id="Dates" onchange="DateChanged(this.value)">
                   <option value="234">23</option>
@@ -38,9 +38,10 @@
               </div>
         </div>   
     </div>
-    <div class="container-fluid" style='background-color: black; border:solid green ;'>
-      <div class ='col-md-10' style="height: 450px;"></div>
-          <div id='map'></div>
+    <div class="container-fluid" >
+      <div class ='col-md-10' style="height: 600px;">
+        <div id='map'></div>
+    </div>
     </div>
     <div class="row">
         <div class="col-md-2">
