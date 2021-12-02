@@ -1,4 +1,4 @@
-function createMap(state) {
+function createMap(statesborder) {
 
   // Create the tile layer that will be the background of our map.
   var streetmap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -6,32 +6,30 @@ function createMap(state) {
   });
 
   // Create the map object with options.
-  L.map("map", {
-    center: [31.054487, -97.563461 ],
-    zoom: 3,
-    layers: [streetmap, state]
+  var map = L.map("map", {
+    center: [40.73, -74.0059],
+    zoom: 12,
+    layers: [streetmap, statesborder]
   });
-
-  // Create a layer control, and pass it baseMaps and overlayMaps. Add the layer control to the map.
 
 }
 
 function createMarkers(response) {
-  
-  // Pull the "stations" property from response.data.
-  var feature = response.features;
-  var state = new L.layerGroup()
+
+  var stateborder = new L.layerGroup()
 
   L.geoJson(response, {
-    color: "#50a573",
-    weight:2
-    ,
-    onEachFeature: function(feature,layer) {
-    layer.bindPopup(`<h1>${feature.properties.NAME}<h/1>`);
-    }}).addTo(state)
+      color: "#50a573",
+      weight:2,
+
+      onEachFeature: function(feature,layer) {
+          layer.bindPopup(`<h1>${feature.properties.NAME}<h/1>`);
+      }
+  }).addTo(stateborder)
+  
 
   // Create a layer group that's made from the bike markers array, and pass it to the createMap function.
-  createMap(state);
+  createMap(stateborder);
 }
 
 
