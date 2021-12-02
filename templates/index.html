@@ -1,39 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>COVID-19 USA Pandemic Dashboard</title>
 
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
 
-        <div class="row">
-            <div class="col-md-2">
-              <div class="well">
-                <h5>State Selection:</h5>
-                <select id="States" onchange="StateChanged(this.value)">
-                  <option value="CA">CA</option>
-                  <option value="TX">TX</option>
-                  <option value="FL">FL</option>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin="" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+        crossorigin="anonymous"/>
+</head>
+<body>
+  <div class="container" style='background-color: aqua;'>
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h1>COVID-19 USA Pandemic Dashboard</h1>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="well" style="background-color: greenyellow;">
+                <h5>Dates</h5>
+                <select id="Dates" onchange="DateChanged(this.value)">
+                  <option value="234">23</option>
+                  <option value="32">323</option>
+                  <option value="1">23232323</option>
                 </select>
+              </div>
+        </div>   
+    </div>
+    <div class="container-fluid" style='background-color: black; border:solid green ;'>
+      <div class ='col-md-10' style="height: 450px;"></div>
+          <div id='map'></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="well">
+              <h5>States</h5>
+              <select id="States" onchange="StateChanged(this.value)">
+                <option value="CA">CA</option>
+                <option value="TX">TX</option>
+                <option value="FL">FL</option>
+              </select>
             </div>
+          </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div id="bar-1"></div>
+        <img alt="bar-1" src="https://via.placeholder.com/555x300">
+      </div>
+      <div class="col-md-5">
+        <div id="bar-2"></div>
+        <img alt="bar-2" src="https://via.placeholder.com/555x300">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div id="line-1"></div>
+        <img alt="line-1" src="https://via.placeholder.com/555x300">
+      </div>
+      <div class="col-md-5">
+        <div id="line-2"></div>
+        <img alt="line-2" src="https://via.placeholder.com/555x300">
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+          <div id="piechart"></div>
+          <img alt="piechart" src="https://via.placeholder.com/555x300">
         </div>
-        
-                <div class="col-md-2">
-                    <div class="well">
-                    <h5>Date Selection:</h5>
-                    <select id="Dates" onchange="DateChanged(this.value)">
-                     <option value="234">23</option>
-                     <option value="32">323</option>
-                    <option value="1">23232323</option>
-                    </select>
-                </div>
-            </div>
-    </body>
+      </div>
+    <footer>
+        <p>Authors: Shaun Ochenduszko, Boris Rubel, Rodrigo Lizaran, Dylan Castillo</p>
+    </footer>
+  </div>
+  
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
 
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script type="text/javascript" src = "../static/logic.js"></script>
-    </html>
+  <!-- D3 script -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <!-- Plotly scrip -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 
+
+  <!-- Our JavaScript for the map -->
+  <script type="text/javascript" src="static/js/logic.js"></script>
+
+  <!-- Our JavaScript for the map -->
+  <script type="text/javascript" src="static/js/logic1.js"></script>
+
+  <!-- Our JavaScript for the vis1 -->
+  <script type="text/javascript" src="static/js/vis1.js"></script> 
+
+  <!-- Our JavaScript for the vis2 -->
+  <script type="text/javascript" src="static/js/vis2.js"></script>
+
+  <!-- Our JavaScript for the vis3 -->
+  <script type="text/javascript" src="static/js/vis3.js"></script>
+
+  <!-- Our JavaScript for the vis4 -->
+  <script type="text/javascript" src="static/js/vis4.js"></script>
+
+</body>
+</html>
