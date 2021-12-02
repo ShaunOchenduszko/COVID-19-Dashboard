@@ -7,8 +7,8 @@ function createMap(statesborder) {
 
   // Create the map object with options.
   var map = L.map("map", {
-    center: [40.73, -74.0059],
-    zoom: 12,
+    center: [47.283049, -120.760049],
+    zoom: 2.5,
     layers: [streetmap, statesborder]
   });
 
