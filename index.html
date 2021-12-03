@@ -20,7 +20,7 @@
         crossorigin="anonymous"/>
 </head>
 <body>
-  <div class="container">
+  <div class="container" style='background-color: aqua;'>
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
         <h1>COVID-19 USA Pandemic Dashboard</h1>
@@ -28,20 +28,19 @@
     </div>
     <div class="row">
         <div class="col-md-2">
-            <div class="well">
+            <div class="well" style="background-color: greenyellow;">
                 <h5>Dates</h5>
                 <select id="Dates" onchange="DateChanged(this.value)">
-                    <option value="2020, 8, 1">2020, 8, 1</option>
-                    <option value="2019, 8, 1">2019, 8, 1</option>
-                    <option value="2020, 8, 1">2020, 8, 1</option>
+                  <option value="234">23</option>
+                  <option value="32">323</option>
+                  <option value="1">23232323</option>
                 </select>
               </div>
         </div>   
     </div>
-    <div class="container-fluid" >
-      <div class ='col-md-10' style="height: 600px;">
-        <div id='map'></div>
-    </div>
+    <div class="container-fluid" style='background-color: black; border:solid green ;'>
+      <div class ='col-md-10' style="height: 450px;"></div>
+          <div id='map'></div>
     </div>
     <div class="row">
         <div class="col-md-2">
@@ -102,6 +101,9 @@
   <!-- Our JavaScript for the map -->
   <script type="text/javascript" src="static/js/logic.js"></script>
 
+  <!-- Our JavaScript for the map -->
+  <script type="text/javascript" src="static/js/logic1.js"></script>
+
   <!-- Our JavaScript for the vis1 -->
   <script type="text/javascript" src="static/js/vis1.js"></script> 
 
@@ -113,9 +115,6 @@
 
   <!-- Our JavaScript for the vis4 -->
   <script type="text/javascript" src="static/js/vis4.js"></script>
-
-  <!-- Our JavaScript for the vis4 -->
-  <script type="text/javascript" src="static/js/stateAbbreviations.js"></script>
 
 </body>
 </html>

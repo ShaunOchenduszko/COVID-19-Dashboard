@@ -1,3 +1,14 @@
+var dropdownMenu = d3.select("#Dates");
+var date = dropdownMenu.property("value");
+
+// Initialize with default date
+d3.json(`/cov1/${date}`).then(date=> {
+  d3.json("https://raw.githubusercontent.com/ShaunOchenduszko/COVID-19-Visualization/Rbranch/Resources/geoJSON_usa.json").then(feature =>{
+    createMarkers(date, feature);
+  });
+})
+
+// Create map
 function createMap(statesborder) {
 
   // Create the tile layer that will be the background of our map.
@@ -14,17 +25,45 @@ function createMap(statesborder) {
 
 }
 
-function createMarkers(response) {
+// Create markers and popups
+function createMarkers(date, features) {
 
-  console.log(response)
+  var feature = features.features
+  console.log(feature)
+  console.log(date)
+
   var stateborder = new L.layerGroup()
 
-  L.geoJson(response, {
+  L.geoJson(features, {
       color: "#50a573",
       weight:2,
 
       onEachFeature: function(feature,layer) {
-          layer.bindPopup(`<h1>${feature.properties.NAME}<h/1>`);
+
+        for (var i=0; i < feature.length; i++){
+
+          for (var j=0; j < date.length; j++){
+
+          var currentFfeature = feature[i]
+          var currentState = currentFfeature.properties.NAME
+          var stateAbbreviation = convertRegion(currentState, TO_ABBREVIATED)
+
+          var currentDate = date[j]
+
+
+          if (stateAbbreviation == currentDate.state) {
+            var cases_per_100 = currentFfeature.cases_per_100
+            var deaths_per_100 = currentFfeature.deaths_per_100
+            var population = currentFfeature.population
+            var series_complete_pop_pct = currentFfeature.series_complete_pop_pct
+            var submission_date =  currentFfeature.submission_date
+            var tot_cases =  currentFfeature.tot_cases
+            var tot_death =  currentFfeature.tot_death
+            var unemployment_rate = currentFfeature.unemployment_rate
+          }
+        }
+      }
+          layer.bindPopup(`<h3>${feature.properties.NAME}<h/3>`);
       }
   }).addTo(stateborder)
   
@@ -33,6 +72,30 @@ function createMarkers(response) {
   createMap(stateborder);
 }
 
+function DateChanged(){
+  var dropdownMenu = d3.select("#Dates");
+  var date = dropdownMenu.property("value");
 
-// Perform an API call to the Citi Bike API to get the station information. Call createMarkers when it completes.
-d3.json("https://raw.githubusercontent.com/ShaunOchenduszko/COVID-19-Visualization/Rbranch/Resources/geoJSON_usa.json").then(createMarkers);
+  d3.json(`/cov1/${date}`).then(feature=> {
+    d3.json("https://raw.githubusercontent.com/ShaunOchenduszko/COVID-19-Visualization/Rbranch/Resources/geoJSON_usa.json").then(map => {
+      createMarkers(map, feature)
+    });
+      console.log(map);
+  })
+}
+
+// Default state
+var dropdownMenu = d3.select("#States");
+var state = dropdownMenu.property("value");
+
+// For visualization charts
+function StateChanged(){
+  var dropdownMenu = d3.select("#States");
+  var state = dropdownMenu.property("value");
+  
+  d3.json(`/cov/${state}`).then(data=> {
+      console.log(data);
+  })
+
+}
+
