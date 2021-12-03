@@ -12,10 +12,14 @@ Full-stack Interactive Dashboard Analyzing US COVID 19 Data Exploring Cases, Dea
  - Data was then transformed and filtered utilizing SQLAlchemy ORM tools to construct our datasets for our graphs
 
 ### Step 2 - Visualizations
-Use Plotly,js and Leaflet.js to build interactive charts for the dashboard
+Use Plotly.js and Leaflet.js to build interactive charts for the dashboard
 
- - Create a Map with markers using data from the date route 
+ - Create a Date Drop-Down using data from the date route
+
+ - Map with Markers using data from the date route 
      - Using Cases, Deaths, Case Per 100, Death Per 100, Vaccination Percentage, Unemployment, and Population
+
+ - Create a State Drop-Down using data from the state route
 
  - Create a Line Graph of Cases over Time
 
