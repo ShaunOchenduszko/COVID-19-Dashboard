@@ -5,7 +5,7 @@ Full-stack Interactive Dashboard Analyzing US COVID 19 Data Exploring Cases, Dea
  
 ## Objective
 
-### Map: United States
+### Map:
 
 ### Line Graph:
 
