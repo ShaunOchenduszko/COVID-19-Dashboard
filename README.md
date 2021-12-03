@@ -15,11 +15,13 @@ Full-stack Interactive Dashboard Analyzing US COVID 19 Data Exploring Cases, Dea
 Use Plotly.js and Leaflet.js to build interactive charts for the dashboard
 
  - Create a Date Drop-Down using data from the date route
+     - This drop-down will control the data for the map
 
  - Map with Markers using data from the date route 
      - Using Cases, Deaths, Case Per 100, Death Per 100, Vaccination Percentage, Unemployment, and Population
 
  - Create a State Drop-Down using data from the state route
+     - This drop-down will control the data for the graphs below 
 
  - Create a Line Graph of Cases over Time
 
