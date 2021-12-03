@@ -30,7 +30,7 @@ def home():
 
 @app.route('/cov1/<date>')
 def date_func(date):
-
+    
     # map
     session = Session(engine)
     results = session.query(covid_case_death.submission_date, covid_case_death.state, covid_case_death.tot_cases, covid_case_death.tot_death, covid_vac.series_complete_pop_pct, state_population.population, us_unemployment.unemployment_rate)\

@@ -34,37 +34,67 @@ function createMarkers(date, features) {
 
   var stateborder = new L.layerGroup()
 
+  list = []
+  for (var i=0; i < feature.length; i++){
+    var currentFfeature = feature[i]
+    var currentState = currentFfeature.properties.NAME
+    var stateAbbreviation = convertRegion(currentState, TO_ABBREVIATED)
+
+    for (var j=0; j < date.length; j++){
+
+      var currentDate = date[j]
+      if (stateAbbreviation = currentDate.state) {
+        var cases_per_100 = currentDate.cases_per_100
+        var deaths_per_100 = currentDate.deaths_per_100
+        var population = currentDate.population
+        var series_complete_pop_pct = currentDate.series_complete_pop_pct
+        var submission_date =  currentDate.submission_date
+        var tot_cases =  currentDate.tot_cases
+        var tot_death =  currentDate.tot_death
+        var unemployment_rate = currentDate.unemployment_rate
+      }
+      list.push(stateAbbreviation)
+      list.push(cases_per_100,deaths_per_100)
+    }
+  }
+  console.log(list)
+
   L.geoJson(features, {
       color: "#50a573",
       weight:2,
 
       onEachFeature: function(feature,layer) {
 
-        for (var i=0; i < feature.length; i++){
+          var currentState = feature.properties.NAME
+          var stateAbbreviation = convertRegion(currentState, TO_ABBREVIATED)
 
           for (var j=0; j < date.length; j++){
 
-          var currentFfeature = feature[i]
-          var currentState = currentFfeature.properties.NAME
-          var stateAbbreviation = convertRegion(currentState, TO_ABBREVIATED)
+            var currentDate = date[j]
 
-          var currentDate = date[j]
-
-
-          if (stateAbbreviation == currentDate.state) {
-            var cases_per_100 = currentFfeature.cases_per_100
-            var deaths_per_100 = currentFfeature.deaths_per_100
-            var population = currentFfeature.population
-            var series_complete_pop_pct = currentFfeature.series_complete_pop_pct
-            var submission_date =  currentFfeature.submission_date
-            var tot_cases =  currentFfeature.tot_cases
-            var tot_death =  currentFfeature.tot_death
-            var unemployment_rate = currentFfeature.unemployment_rate
+            if (stateAbbreviation == currentDate.state) {
+              var cases_per_100 = currentDate.cases_per_100
+              var deaths_per_100 = currentDate.deaths_per_100
+              var population = currentDate.population
+              var series_complete_pop_pct = currentDate.series_complete_pop_pct
+              var submission_date =  currentDate.submission_date
+              var tot_cases =  currentDate.tot_cases
+              var tot_death =  currentDate.tot_death
+              var unemployment_rate = currentDate.unemployment_rate
+            }
+            
           }
+          layer.bindPopup(`<h3>${feature.properties.NAME}</h3>
+              <p>Submission Date: ${submission_date}</p>
+              <p>Population: ${population}</p>
+              <p>Vacinated Population: ${series_complete_pop_pct}</p>
+              <p>Total Cases: ${tot_cases}</p>
+              <p>Total Deaths: ${tot_death}</p>
+              <p>Cases per 100: ${cases_per_100}</p>
+              <p>Deaths per 100: ${deaths_per_100}</p>
+              <p>Unemployment Rate: ${unemployment_rate}</p>`);
         }
-      }
-          layer.bindPopup(`<h3>${feature.properties.NAME}<h/3>`);
-      }
+          
   }).addTo(stateborder)
   
 
@@ -78,9 +108,9 @@ function DateChanged(){
 
   d3.json(`/cov1/${date}`).then(feature=> {
     d3.json("https://raw.githubusercontent.com/ShaunOchenduszko/COVID-19-Visualization/Rbranch/Resources/geoJSON_usa.json").then(map => {
-      createMarkers(map, feature)
+      createMarkers(feature, map)
     });
-      console.log(map);
+    console.log(date)
   })
 }
 
