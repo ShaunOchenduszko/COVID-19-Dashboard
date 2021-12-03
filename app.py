@@ -71,7 +71,7 @@ def state_func(state):
     vis_3 = []
     for submission_date, state, tot_cases, tot_death, population in results:
         results_dic = {}
-        results_dic['submission_date'] = submission_date
+        results_dic['submission_date'] = str(submission_date)
         results_dic['state'] = state
         results_dic['tot_cases'] = tot_cases
         results_dic['tot_death'] = tot_death
@@ -87,7 +87,7 @@ def state_func(state):
     vis_2 = []
     for submission_date, state, tot_cases, tot_death in results:
         results_dic = {}
-        results_dic['submission_date'] = submission_date
+        results_dic['submission_date'] = str(submission_date)
         results_dic['state'] = state
         results_dic['cases_per_100'] = round((tot_cases / population) * 100, 2)
         results_dic['deaths_per_100'] = round((tot_death / population) * 100, 2)
@@ -103,7 +103,7 @@ def state_func(state):
     vis_4 = []
     for submission_date, state, series_complete_pop_pct in results:
         results_dic = {}
-        results_dic['submission_date'] = submission_date
+        results_dic['submission_date'] = str(submission_date)
         results_dic['state'] = state
         results_dic['series_complete_pop_pct'] = series_complete_pop_pct
         vis_4.append(results_dic)
@@ -118,7 +118,7 @@ def state_func(state):
     vis_5 = []
     for submission_date, state, unemployment_rate in results:
         results_dic = {}
-        results_dic['submission_date'] = submission_date
+        results_dic['submission_date'] = str(submission_date)
         results_dic['state'] = state
         results_dic['unemployment_rate'] = unemployment_rate
         vis_5.append(results_dic)
@@ -135,9 +135,9 @@ def state_func(state):
         total = series_complete_janssen + series_complete_moderna + series_complete_pfizer
         results_dic['submission_date'] = submission_date
         results_dic['state'] = state
-        results_dic['series_complete_janssen'] = round((series_complete_janssen/total) * 100, 2)
-        results_dic['series_complete_moderna'] = round((series_complete_moderna/total) * 100, 2)
-        results_dic['series_complete_pfizer'] = round((series_complete_pfizer/total) * 100, 2)
+        results_dic['series_complete_janssen'] = series_complete_janssen
+        results_dic['series_complete_moderna'] = series_complete_moderna
+        results_dic['series_complete_pfizer'] = series_complete_pfizer
         vis_6.append(results_dic)
 
     #results
