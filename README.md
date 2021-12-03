@@ -3,7 +3,7 @@
 ## Background
 Full-stack Interactive Dashboard Analyzing US COVID 19 Data Exploring Cases, Deaths, Vaccinations, and Unemployment. Utilizing Jupyter Notebook, Python, Flask, SQLAlchemy, PostgreSQL, Leaflet.js, Plotly.js, and HTML/CSS.
  
-## Objective
+## Objectives
 
 ### Step 1 - Extract, Transform, Load
  - Data was first extracted from cdc.gov
