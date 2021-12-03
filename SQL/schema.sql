@@ -40,5 +40,3 @@ id SERIAL PRIMARY KEY,
 state VARCHAR (5),
 population FLOAT
 );
-
-drop table covid_case_death
