@@ -7,8 +7,11 @@ Full-stack Interactive Dashboard Analyzing US COVID 19 Data Exploring Cases, Dea
 
 ### Step 1 - ETL
  - Data was first extracted from cdc.gov
- - csv files were then loaded into the Postgres database
+ - CSV files were then loaded into the Postgres database
+ - Session was created to the database using SQLAlchemy
+ - Data was then trasnformed and filtered utilizing SQLAlchemy ORM tools to construct our graphs
 
+### Step 2 - Visualizations
 ### Map
 
 ### Line Graph
