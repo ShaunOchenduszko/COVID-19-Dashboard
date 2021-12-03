@@ -14,7 +14,8 @@ Full-stack Interactive Dashboard Analyzing US COVID 19 Data Exploring Cases, Dea
 ### Step 2 - Visualizations
 Use Plotly,js and Leaflet.js to build interactive charts for the dashboard
 
- - Create a Map using data from the '/cov1/<date>'
+ - Create a Map using data from the date route
+  - 
 
 ### Line Graph
 
