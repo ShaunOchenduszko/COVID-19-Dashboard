@@ -37,7 +37,7 @@ Use Plotly.js and Leaflet.js to build interactive charts for the dashboard
  
  ### Step 3 - Flask
  Deploy flask app to local server
- - Use the provided Postgres file for the database
+ - Use the provided PostgreSQL file for the database
 
 ### Step 4 - Flask API
 Using Flask API code to serve the data needed for the plots
